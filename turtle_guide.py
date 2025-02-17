@@ -130,5 +130,6 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # Keep the window open
-    turtle.done()
+    # Keep the window open and ensure screen updates
+    screen.update()
+    turtle.mainloop()
