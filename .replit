@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Run Turtle"
+runButton = "Run Guides"
 
 [[workflows.workflow]]
 name = "Run Calculator"
@@ -32,3 +32,15 @@ author = 39555485
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python turtle_guide.py"
+
+[[workflows.workflow]]
+name = "Run Guides"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python run_guides.py"
+
+[[ports]]
+localPort = 8080
+externalPort = 80
