@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Run Guides"
+runButton = "Run Directory Guide"
 
 [[workflows.workflow]]
 name = "Run Calculator"
@@ -40,6 +40,14 @@ author = 39555485
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python run_guides.py"
+
+[[workflows.workflow]]
+name = "Run Directory Guide"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python directory_guide.py"
 
 [[ports]]
 localPort = 8080
