@@ -5,6 +5,7 @@ description = ""
 authors = ["Your Name <you@example.com>"]
 requires-python = ">=3.11"
 dependencies = [
+    "django>=5.1.6",
     "flask>=3.1.0",
     "pytest>=8.3.4",
     "pytest-asyncio>=0.25.3",
