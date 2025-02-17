@@ -255,3 +255,163 @@ try:
     raise CustomError("Something went wrong", 500)
 except CustomError as e:
     print(f"Caught custom error: {e.message} (Code: {e.error_code})")
+
+# Advanced Math Operations
+print("\n=== Advanced Math Operations ===")
+import math
+
+# Basic math operations
+print(f"Factorial of 5: {math.factorial(5)}")
+print(f"GCD of 48 and 60: {math.gcd(48, 60)}")
+print(f"Square root of 16: {math.sqrt(16)}")
+print(f"Pi: {math.pi}")
+print(f"E: {math.e}")
+print(f"Floor of 3.7: {math.floor(3.7)}")
+print(f"Ceiling of 3.7: {math.ceil(3.7)}")
+
+# Complex numbers
+z = 3 + 4j
+print(f"Complex number: {z}")
+print(f"Real part: {z.real}")
+print(f"Imaginary part: {z.imag}")
+print(f"Magnitude: {abs(z)}")
+
+# More Advanced Dictionary Operations
+print("\n=== Advanced Dictionary Operations ===")
+# Nested dictionaries
+school = {
+    'class_A': {
+        'teacher': 'Smith',
+        'students': ['John', 'Alice', 'Bob'],
+        'average_grade': 85.5
+    },
+    'class_B': {
+        'teacher': 'Johnson',
+        'students': ['Charlie', 'Diana', 'Eve'],
+        'average_grade': 82.3
+    }
+}
+
+# Dictionary methods
+print(f"All teachers: {[class_info['teacher'] for class_info in school.values()]}")
+print(f"All students: {[student for class_info in school.values() for student in class_info['students']]}")
+
+# Dictionary merging
+dict1 = {'a': 1, 'b': 2}
+dict2 = {'c': 3, 'd': 4}
+merged_dict = {**dict1, **dict2}
+print(f"Merged dictionary: {merged_dict}")
+
+# Advanced Sorting
+print("\n=== Advanced Sorting ===")
+# Custom sorting
+students = [
+    {'name': 'Alice', 'grade': 85},
+    {'name': 'Bob', 'grade': 92},
+    {'name': 'Charlie', 'grade': 78}
+]
+# Sort by grade
+sorted_students = sorted(students, key=lambda x: x['grade'], reverse=True)
+print(f"Students sorted by grade: {sorted_students}")
+
+# Sort strings by length
+words = ['python', 'programming', 'code', 'developer']
+sorted_words = sorted(words, key=len)
+print(f"Words sorted by length: {sorted_words}")
+
+# Object-Oriented Programming
+print("\n=== Object-Oriented Programming ===")
+class Vehicle:
+    def __init__(self, brand, model, year):
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self._mileage = 0
+
+    @property
+    def mileage(self):
+        return self._mileage
+
+    @mileage.setter
+    def mileage(self, value):
+        if value < 0:
+            raise ValueError("Mileage cannot be negative")
+        self._mileage = value
+
+    def __str__(self):
+        return f"{self.year} {self.brand} {self.model}"
+
+class Car(Vehicle):
+    def __init__(self, brand, model, year, fuel_type):
+        super().__init__(brand, model, year)
+        self.fuel_type = fuel_type
+
+    def display_info(self):
+        return f"{super().__str__()} ({self.fuel_type})"
+
+# Create and use objects
+my_car = Car("Toyota", "Camry", 2022, "Hybrid")
+print(f"Car info: {my_car.display_info()}")
+my_car.mileage = 5000
+print(f"Mileage: {my_car.mileage}")
+
+# More Control Flow Examples
+print("\n=== Advanced Control Flow ===")
+# Match case (Python 3.10+)
+def analyze_type(data):
+    match data:
+        case int():
+            return "Integer"
+        case str():
+            return "String"
+        case list():
+            return "List"
+        case _:
+            return "Unknown"
+
+print(f"Type analysis: {analyze_type(42)}")
+print(f"Type analysis: {analyze_type('Hello')}")
+
+# For-else and while-else
+print("\nFor-else example:")
+for i in range(5):
+    if i == 10:  # Will never be true
+        break
+else:
+    print("Loop completed without break")
+
+# Nested loops with control
+print("\nNested loop example:")
+for i in range(3):
+    for j in range(3):
+        if i == j:
+            continue
+        print(f"i={i}, j={j}")
+
+# Boolean operations and short-circuit evaluation
+print("\n=== Boolean Operations ===")
+x = 5
+y = 10
+print(f"x < y and y < 15: {x < y and y < 15}")
+print(f"x > y or y < 15: {x > y or y < 15}")
+print(f"not (x < y): {not (x < y)}")
+
+# More Error Handling
+print("\n=== Advanced Error Handling ===")
+def divide_numbers(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Cannot divide by zero")
+        return None
+    except TypeError:
+        print("Invalid number type")
+        return None
+    else:
+        print("Division successful")
+        return result
+    finally:
+        print("Division operation completed")
+
+print(divide_numbers(10, 2))
+print(divide_numbers(10, 0))
