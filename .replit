@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Programming Test"
+runButton = "Run Menu"
 
 [[workflows.workflow]]
 name = "Run Calculator"
