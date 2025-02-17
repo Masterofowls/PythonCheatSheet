@@ -33,7 +33,9 @@ def main():
         ("Packages Guide", "packages_guide.py"),
         ("PyEnv Guide", "pyenv_guide.py"),
         ("PyPy Guide", "pypy_guide.py"),
-        ("SQL Guide", "sql_guide.py")
+        ("SQL Guide", "sql_guide.py"),
+        ("Turtle Guide", "turtle_guide.py"),
+        ("PyGame Guide", "pygame_guide.py")
     ]
 
     for name, file in guides:
