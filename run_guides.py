@@ -49,6 +49,9 @@ class GuideRunner:
                 ("Pipx Guide", "pipx_guide.py"),
                 ("PyEnv Guide", "pyenv_guide.py"),
                 ("PyPy Guide", "pypy_guide.py"),
+            ],
+            "Learning & Practice": [
+                ("Programming Test", "programming_test.py"),
             ]
         }
         
