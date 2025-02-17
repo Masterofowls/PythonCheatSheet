@@ -1,4 +1,3 @@
-
 """
 COMPREHENSIVE PYTHON AI ALGORITHMS GUIDE
 ======================================
@@ -10,6 +9,11 @@ import numpy as np
 from typing import List, Tuple, Optional
 import random
 import math
+import tkinter as tk
+from tkinter import ttk
+import matplotlib.pyplot as plt
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
 
 # ===========================
 # SECTION 1: NEURAL NETWORKS
@@ -24,14 +28,14 @@ class NeuralNetwork:
         self.layers = layers
         self.weights = []
         self.biases = []
-        
+
         for i in range(len(layers) - 1):
             self.weights.append(np.random.randn(layers[i], layers[i + 1]))
             self.biases.append(np.random.randn(1, layers[i + 1]))
-    
+
     def sigmoid(self, x: np.ndarray) -> np.ndarray:
         return 1 / (1 + np.exp(-x))
-    
+
     def forward(self, inputs: np.ndarray) -> np.ndarray:
         activation = inputs
         for i in range(len(self.weights)):
@@ -58,40 +62,40 @@ class GeneticAlgorithm:
         self.population_size = population_size
         self.gene_length = gene_length
         self.population = self._create_population()
-    
+
     def _create_population(self) -> List[List[int]]:
         return [[random.randint(0, 1) for _ in range(self.gene_length)]
                 for _ in range(self.population_size)]
-    
+
     def fitness(self, individual: List[int]) -> int:
         return sum(individual)  # Simple fitness: count of 1s
-    
+
     def crossover(self, parent1: List[int], parent2: List[int]) -> Tuple[List[int], List[int]]:
         point = random.randint(1, self.gene_length - 1)
         child1 = parent1[:point] + parent2[point:]
         child2 = parent2[:point] + parent1[point:]
         return child1, child2
-    
+
     def mutate(self, individual: List[int], mutation_rate: float = 0.01) -> List[int]:
         return [1 - gene if random.random() < mutation_rate else gene 
                 for gene in individual]
-    
+
     def evolve(self, generations: int = 100) -> List[int]:
         for _ in range(generations):
             # Sort population by fitness
             self.population.sort(key=self.fitness, reverse=True)
-            
+
             # Create new population
             new_population = self.population[:2]  # Keep best 2
-            
+
             while len(new_population) < self.population_size:
                 parent1 = random.choice(self.population[:10])  # Top 10
                 parent2 = random.choice(self.population[:10])
                 child1, child2 = self.crossover(parent1, parent2)
                 new_population.extend([self.mutate(child1), self.mutate(child2)])
-            
+
             self.population = new_population[:self.population_size]
-        
+
         return max(self.population, key=self.fitness)
 
 # Example usage
@@ -112,26 +116,26 @@ class KMeans:
     def __init__(self, k: int, max_iters: int = 100):
         self.k = k
         self.max_iters = max_iters
-    
+
     def fit(self, data: np.ndarray) -> Tuple[np.ndarray, List[int]]:
         # Initialize centroids randomly
         centroids = data[np.random.choice(len(data), self.k, replace=False)]
-        
+
         for _ in range(self.max_iters):
             # Assign points to nearest centroid
             distances = np.sqrt(((data - centroids[:, np.newaxis])**2).sum(axis=2))
             labels = np.argmin(distances, axis=0)
-            
+
             # Update centroids
             new_centroids = np.array([data[labels == i].mean(axis=0) 
                                     for i in range(self.k)])
-            
+
             # Check convergence
             if np.all(centroids == new_centroids):
                 break
-                
+
             centroids = new_centroids
-        
+
         return centroids, labels.tolist()
 
 # Example usage
@@ -161,10 +165,10 @@ class AStar:
         self.grid = grid
         self.rows = len(grid)
         self.cols = len(grid[0])
-    
+
     def heuristic(self, pos: Tuple[int, int], goal: Tuple[int, int]) -> float:
         return abs(pos[0] - goal[0]) + abs(pos[1] - goal[1])
-    
+
     def get_neighbors(self, node: Node) -> List[Tuple[int, int]]:
         neighbors = []
         for dx, dy in [(0, 1), (1, 0), (0, -1), (-1, 0)]:  # 4-directional
@@ -174,39 +178,39 @@ class AStar:
                 self.grid[new_pos[0]][new_pos[1]] == 0):
                 neighbors.append(new_pos)
         return neighbors
-    
+
     def find_path(self, start: Tuple[int, int], goal: Tuple[int, int]) -> List[Tuple[int, int]]:
         start_node = Node(start)
         goal_node = Node(goal)
-        
+
         open_list = [start_node]
         closed_list = []
-        
+
         while open_list:
             current_node = min(open_list, key=lambda x: x.f)
             open_list.remove(current_node)
             closed_list.append(current_node)
-            
+
             if current_node.position == goal_node.position:
                 path = []
                 while current_node:
                     path.append(current_node.position)
                     current_node = current_node.parent
                 return path[::-1]
-            
+
             for neighbor_pos in self.get_neighbors(current_node):
                 neighbor = Node(neighbor_pos, current_node)
-                
+
                 if neighbor in closed_list:
                     continue
-                
+
                 neighbor.g = current_node.g + 1
                 neighbor.h = self.heuristic(neighbor_pos, goal)
                 neighbor.f = neighbor.g + neighbor.h
-                
+
                 if neighbor not in open_list:
                     open_list.append(neighbor)
-        
+
         return []  # No path found
 
 # Example usage
@@ -234,16 +238,16 @@ class TicTacToe:
         self.board = [' ' for _ in range(9)]
         self.human = 'X'
         self.ai = 'O'
-    
+
     def available_moves(self) -> List[int]:
         return [i for i, spot in enumerate(self.board) if spot == ' ']
-    
+
     def make_move(self, position: int, player: str) -> None:
         self.board[position] = player
-    
+
     def undo_move(self, position: int) -> None:
         self.board[position] = ' '
-    
+
     def check_winner(self, player: str) -> bool:
         # Check rows, columns and diagonals
         win_combinations = [
@@ -253,7 +257,7 @@ class TicTacToe:
         ]
         return any(all(self.board[i] == player for i in combo) 
                   for combo in win_combinations)
-    
+
     def minimax(self, depth: int, is_maximizing: bool) -> int:
         if self.check_winner(self.ai):
             return 1
@@ -261,7 +265,7 @@ class TicTacToe:
             return -1
         if not self.available_moves():
             return 0
-        
+
         if is_maximizing:
             best_score = -math.inf
             for move in self.available_moves():
@@ -278,20 +282,20 @@ class TicTacToe:
                 self.undo_move(move)
                 best_score = min(score, best_score)
             return best_score
-    
+
     def get_best_move(self) -> int:
         best_score = -math.inf
         best_move = None
-        
+
         for move in self.available_moves():
             self.make_move(move, self.ai)
             score = self.minimax(0, False)
             self.undo_move(move)
-            
+
             if score > best_score:
                 best_score = score
                 best_move = move
-        
+
         return best_move
 
 # Example usage
@@ -299,3 +303,47 @@ game = TicTacToe()
 game.make_move(0, 'X')  # Human moves
 best_ai_move = game.get_best_move()
 print(f"Best AI move: {best_ai_move}")
+
+
+def create_visualization():
+    root = tk.Tk()
+    root.title("AI Algorithms Visualization")
+    root.geometry("800x600")
+
+    notebook = ttk.Notebook(root)
+    notebook.pack(fill='both', expand=True, padx=10, pady=10)
+
+    # Create tabs for different visualizations
+    neural_frame = ttk.Frame(notebook)
+    genetic_frame = ttk.Frame(notebook)
+    kmeans_frame = ttk.Frame(notebook)
+
+    notebook.add(neural_frame, text='Neural Network')
+    notebook.add(genetic_frame, text='Genetic Algorithm')
+    notebook.add(kmeans_frame, text='K-Means')
+
+    # Add plots
+    def plot_neural():
+        fig, ax = plt.subplots()
+        ax.plot(nn.forward(np.array([[0, 1]])))
+        canvas = FigureCanvasTkAgg(fig, neural_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill='both', expand=True)
+
+    def plot_kmeans():
+        fig, ax = plt.subplots()
+        ax.scatter(data[:, 0], data[:, 1], c=labels)
+        ax.scatter(centroids[:, 0], centroids[:, 1], c='red', marker='x')
+        canvas = FigureCanvasTkAgg(fig, kmeans_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill='both', expand=True)
+
+    plot_neural()
+    plot_kmeans()
+
+    return root
+
+if __name__ == "__main__":
+    print("Python Environment Information:")
+    root = create_visualization()
+    root.mainloop()

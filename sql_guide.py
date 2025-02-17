@@ -320,7 +320,39 @@ def maintenance_operations(conn: sqlite3.Connection):
     print(f"\nDatabase size: {(page_size * page_count) / 1024:.2f} KB")
 
 # Main execution
+def create_gui():
+    import tkinter as tk
+    from tkinter import ttk
+    
+    root = tk.Tk()
+    root.title("SQL Operations Demo")
+    root.geometry("600x400")
+    
+    # Create text widget to display results
+    text_area = tk.Text(root, height=20, width=60)
+    text_area.pack(padx=10, pady=10)
+    
+    def display_output(message):
+        text_area.insert(tk.END, message + "\n")
+        text_area.see(tk.END)
+    
+    # Redirect print to GUI
+    import sys
+    class PrintRedirector:
+        def write(self, text):
+            text_area.insert(tk.END, text)
+            text_area.see(tk.END)
+        def flush(self):
+            pass
+    
+    sys.stdout = PrintRedirector()
+    
+    return root
+
 if __name__ == "__main__":
+    # Create GUI window
+    root = create_gui()
+    
     # Create connection
     conn = create_connection()
     

@@ -77,8 +77,34 @@ def run_version_specific_code():
     return message
 
 # Example usage
+def create_gui():
+    import tkinter as tk
+    from tkinter import ttk
+    
+    root = tk.Tk()
+    root.title("Python Environment Guide")
+    root.geometry("600x400")
+    
+    # Create tree view for environment info
+    tree = ttk.Treeview(root, columns=('Value',), show='headings')
+    tree.heading('Value', text='Value')
+    tree.pack(fill='both', expand=True, padx=10, pady=10)
+    
+    # Add environment information
+    info = get_python_info()
+    for key, value in info.items():
+        tree.insert('', 'end', values=(f"{key}: {value}",))
+    
+    features = get_available_features()
+    tree.insert('', 'end', values=("Available Features:",))
+    for feature in features:
+        tree.insert('', 'end', values=(f"- {feature}",))
+    
+    return root
+
 if __name__ == "__main__":
     print("Python Environment Information:")
+    root = create_gui()
     info = get_python_info()
     for key, value in info.items():
         print(f"{key.title()}: {value}")
