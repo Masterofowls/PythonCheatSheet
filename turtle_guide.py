@@ -82,7 +82,7 @@ def colorful_pattern(t: turtle.Turtle):
     """Draw a colorful pattern"""
     colors = ["red", "orange", "yellow", "green", "blue", "purple"]
     t.width(2)
-    
+
     for color in colors:
         t.color(color)
         t.begin_fill()
@@ -97,36 +97,38 @@ def main():
     screen.title("Turtle Graphics Guide")
     screen.bgcolor("white")
     t = setup_turtle()
-    
+
     # Draw various shapes
     draw_square(t, 100)
     t.penup()
     t.goto(-150, 0)
     t.pendown()
-    
+
     draw_circle(t, 50)
     t.penup()
     t.goto(150, 0)
     t.pendown()
-    
+
     draw_star(t, 100)
     t.penup()
     t.goto(0, 150)
     t.pendown()
-    
+
     draw_spiral(t, 5, 5)
     t.penup()
     t.goto(0, -150)
     t.pendown()
-    
+
     draw_flower(t, 30, 8)
     reset_turtle(t)
-    
+
     colorful_pattern(t)
-    
+
     # Hide turtle and keep window open
     t.hideturtle()
-    screen.mainloop()
+    
 
 if __name__ == "__main__":
     main()
+    # Keep the window open
+    turtle.done()
