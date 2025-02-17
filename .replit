@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Packages Guide"
+runButton = "Programming Test"
 
 [[workflows.workflow]]
 name = "Run Calculator"
@@ -88,6 +88,14 @@ author = 39555485
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python packages_guide.py"
+
+[[workflows.workflow]]
+name = "Programming Test"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python programming_test.py"
 
 [[ports]]
 localPort = 8080
