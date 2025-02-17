@@ -132,3 +132,126 @@ age = 25
 print("Basic format: My name is {} and I'm {} years old".format(name, age))
 print(f"F-string: My name is {name} and I'm {age} years old")
 print("Named format: My name is %(name)s and I'm %(age)d years old" % {"name": name, "age": age})
+
+# Decorators
+print("\n=== Decorators ===")
+def timer_decorator(func):
+    from time import time
+    def wrapper(*args, **kwargs):
+        start = time()
+        result = func(*args, **kwargs)
+        end = time()
+        print(f"Function {func.__name__} took {end-start:.2f} seconds to execute")
+        return result
+    return wrapper
+
+@timer_decorator
+def slow_function():
+    import time
+    time.sleep(1)
+    return "Function completed"
+
+print(slow_function())
+
+# Generators
+print("\n=== Generators ===")
+def fibonacci_generator(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+print("First 10 Fibonacci numbers:")
+for num in fibonacci_generator(10):
+    print(num, end=" ")
+print("\n")
+
+# Context Managers
+print("\n=== Context Managers ===")
+from contextlib import contextmanager
+
+@contextmanager
+def temporary_value(obj, attr, value):
+    old_value = getattr(obj, attr)
+    setattr(obj, attr, value)
+    try:
+        yield
+    finally:
+        setattr(obj, attr, old_value)
+
+class Example:
+    def __init__(self):
+        self.value = 1
+
+obj = Example()
+print(f"Before: {obj.value}")
+with temporary_value(obj, 'value', 2):
+    print(f"During: {obj.value}")
+print(f"After: {obj.value}")
+
+# Advanced Data Structures
+print("\n=== Advanced Data Structures ===")
+from collections import defaultdict, Counter, deque
+
+# DefaultDict
+print("DefaultDict example:")
+dd = defaultdict(list)
+words = ["apple", "banana", "apple", "cherry"]
+for word in words:
+    dd[word[0]].append(word)
+print(dd)
+
+# Counter
+print("\nCounter example:")
+inventory = Counter(['apple', 'banana', 'apple', 'cherry', 'apple'])
+print(inventory)
+print(f"Most common item: {inventory.most_common(1)}")
+
+# Deque (Double-ended queue)
+print("\nDeque example:")
+queue = deque([1, 2, 3])
+queue.append(4)
+queue.appendleft(0)
+print(f"Deque: {queue}")
+print(f"Pop right: {queue.pop()}")
+print(f"Pop left: {queue.popleft()}")
+print(f"Final deque: {queue}")
+
+# Type Hints
+print("\n=== Type Hints ===")
+from typing import List, Dict, Optional
+
+def process_data(numbers: List[int], config: Dict[str, str], debug: Optional[bool] = None) -> float:
+    return sum(numbers) / len(numbers) if numbers else 0.0
+
+print(process_data([1, 2, 3, 4], {"mode": "average"}))
+
+# Advanced List Operations
+print("\n=== Advanced List Operations ===")
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# Filter and map in one line
+even_squares = [x**2 for x in numbers if x % 2 == 0]
+print(f"Squares of even numbers: {even_squares}")
+
+# Dictionary comprehension
+print("\n=== Dictionary Comprehension ===")
+square_dict = {x: x**2 for x in range(5)}
+print(f"Square dictionary: {square_dict}")
+
+# Unpacking
+print("\n=== Unpacking ===")
+first, *middle, last = numbers
+print(f"First: {first}, Middle: {middle}, Last: {last}")
+
+# Advanced Exception Handling
+print("\n=== Advanced Exception Handling ===")
+class CustomError(Exception):
+    def __init__(self, message, error_code):
+        self.message = message
+        self.error_code = error_code
+        super().__init__(self.message)
+
+try:
+    raise CustomError("Something went wrong", 500)
+except CustomError as e:
+    print(f"Caught custom error: {e.message} (Code: {e.error_code})")
