@@ -1,11 +1,23 @@
+"""
+COMPREHENSIVE PYTHON PROGRAMMING GUIDE
+====================================
+This guide covers fundamental to advanced Python programming concepts with practical examples.
+Each section demonstrates different aspects of Python with clear explanations and outputs.
+"""
 
-# Basic Data Types and Variables
+# =============================================
+# SECTION 1: FUNDAMENTAL DATA TYPES & VARIABLES
+# =============================================
+"""
+Python's basic data types form the foundation of all programming.
+These include numbers, strings, booleans, and the special None type.
+"""
 print("\n=== Basic Data Types ===")
-integer_num = 42
-float_num = 3.14
-string_text = "Hello, Python!"
-boolean_val = True
-none_val = None
+integer_num = 42        # Whole numbers
+float_num = 3.14       # Decimal numbers
+string_text = "Hello, Python!"  # Text data
+boolean_val = True     # Logical values
+none_val = None       # Represents absence of value
 
 print(f"Integer: {integer_num}")
 print(f"Float: {float_num}")
@@ -13,41 +25,65 @@ print(f"String: {string_text}")
 print(f"Boolean: {boolean_val}")
 print(f"None: {none_val}")
 
-# Operators
+# =====================
+# SECTION 2: OPERATORS
+# =====================
+"""
+Operators perform operations on variables and values.
+Python supports arithmetic, comparison, logical, and bitwise operators.
+"""
 print("\n=== Operators ===")
 a, b = 10, 3
-print(f"Addition: {a + b}")
+print(f"Addition: {a + b}")         # Basic arithmetic
 print(f"Subtraction: {a - b}")
 print(f"Multiplication: {a * b}")
-print(f"Division: {a / b}")
-print(f"Floor Division: {a // b}")
-print(f"Modulus: {a % b}")
-print(f"Exponentiation: {a ** b}")
+print(f"Division: {a / b}")         # Returns float
+print(f"Floor Division: {a // b}")  # Returns integer
+print(f"Modulus: {a % b}")         # Returns remainder
+print(f"Exponentiation: {a ** b}")  # Power operation
 
-# Strings
+# ===========================
+# SECTION 3: STRING HANDLING
+# ===========================
+"""
+Strings are sequences of characters and support various operations.
+Python provides rich string manipulation methods.
+"""
 print("\n=== String Operations ===")
 text = "Python Programming"
 print(f"Original text: {text}")
-print(f"Upper case: {text.upper()}")
-print(f"Lower case: {text.lower()}")
-print(f"Split words: {text.split()}")
-print(f"Replace: {text.replace('Python', 'Cool')}")
-print(f"Length: {len(text)}")
-print(f"Slice: {text[0:6]}")
+print(f"Upper case: {text.upper()}")      # Convert to uppercase
+print(f"Lower case: {text.lower()}")      # Convert to lowercase
+print(f"Split words: {text.split()}")     # Split into list
+print(f"Replace: {text.replace('Python', 'Cool')}")  # Replace substring
+print(f"Length: {len(text)}")             # String length
+print(f"Slice: {text[0:6]}")             # String slicing
 
-# Lists (Arrays)
+# =========================
+# SECTION 4: LIST HANDLING
+# =========================
+"""
+Lists are ordered, mutable sequences that can store mixed data types.
+They support various operations for data manipulation.
+"""
 print("\n=== Lists ===")
 fruits = ["apple", "banana", "orange", "grape"]
 print(f"Original list: {fruits}")
-fruits.append("mango")
+fruits.append("mango")                # Add element at end
 print(f"After append: {fruits}")
-print(f"First item: {fruits[0]}")
-print(f"Last item: {fruits[-1]}")
-print(f"Sliced list: {fruits[1:3]}")
-fruits.sort()
+print(f"First item: {fruits[0]}")     # Indexing
+print(f"Last item: {fruits[-1]}")     # Negative indexing
+print(f"Sliced list: {fruits[1:3]}")  # List slicing
+fruits.sort()                         # In-place sorting
 print(f"Sorted list: {fruits}")
 
-# Dictionaries
+# ============================
+# SECTION 5: DICTIONARY USAGE
+# ============================
+"""
+Dictionaries are key-value pairs that provide fast lookups.
+They are mutable and can store any type of data.
+"""
 print("\n=== Dictionaries ===")
 person = {
     "name": "John",
@@ -55,13 +91,19 @@ person = {
     "city": "New York"
 }
 print(f"Dictionary: {person}")
-print(f"Name: {person['name']}")
-person["email"] = "john@example.com"
+print(f"Name: {person['name']}")          # Access by key
+person["email"] = "john@example.com"      # Add new key-value
 print(f"After adding email: {person}")
-print(f"Keys: {list(person.keys())}")
-print(f"Values: {list(person.values())}")
+print(f"Keys: {list(person.keys())}")     # Get all keys
+print(f"Values: {list(person.values())}")  # Get all values
 
-# Control Flow
+# =========================
+# SECTION 6: CONTROL FLOW
+# =========================
+"""
+Control flow statements alter the execution path based on conditions.
+If-elif-else and loops are fundamental constructs.
+"""
 print("\n=== Control Flow ===")
 # If-else
 number = 15
@@ -88,12 +130,24 @@ while count < 5:
     count += 1
 print("\n")
 
-# List comprehension
+# ================================
+# SECTION 7: LIST COMPREHENSION
+# ================================
+"""
+List comprehensions provide a concise way to create lists.
+They combine loops and conditional statements in a single line.
+"""
 print("\n=== List Comprehension ===")
 squares = [x**2 for x in range(5)]
 print(f"Squares using list comprehension: {squares}")
 
-# Functions
+# =======================
+# SECTION 8: FUNCTIONS
+# =======================
+"""
+Functions encapsulate reusable blocks of code.
+They improve code organization and readability.
+"""
 print("\n=== Functions ===")
 def calculate_area(length, width):
     """Calculate area of a rectangle"""
@@ -101,12 +155,24 @@ def calculate_area(length, width):
 
 print(f"Area of rectangle (5x3): {calculate_area(5, 3)}")
 
-# Lambda function
+# =============================
+# SECTION 9: LAMBDA FUNCTIONS
+# =============================
+"""
+Lambda functions are small, anonymous functions.
+They are often used for short, simple operations.
+"""
 print("\n=== Lambda Functions ===")
 square = lambda x: x**2
 print(f"Square of 7 using lambda: {square(7)}")
 
-# Error Handling
+# =========================
+# SECTION 10: ERROR HANDLING
+# =========================
+"""
+Error handling prevents program crashes.
+Try-except blocks catch exceptions and handle them gracefully.
+"""
 print("\n=== Error Handling ===")
 try:
     result = 10/0
@@ -115,7 +181,13 @@ except ZeroDivisionError:
 finally:
     print("Error handling complete")
 
-# Sets
+# ===================
+# SECTION 11: SETS
+# ===================
+"""
+Sets are unordered collections of unique elements.
+They support set operations like union, intersection, and difference.
+"""
 print("\n=== Sets ===")
 set1 = {1, 2, 3, 4, 5}
 set2 = {4, 5, 6, 7, 8}
@@ -125,7 +197,13 @@ print(f"Union: {set1 | set2}")
 print(f"Intersection: {set1 & set2}")
 print(f"Difference: {set1 - set2}")
 
-# Advanced String Formatting
+# ===================================
+# SECTION 12: ADVANCED STRING FORMATTING
+# ===================================
+"""
+Python offers several ways to format strings, improving readability.
+f-strings, .format(), and % formatting provide flexibility.
+"""
 print("\n=== Advanced String Formatting ===")
 name = "Alice"
 age = 25
@@ -133,7 +211,13 @@ print("Basic format: My name is {} and I'm {} years old".format(name, age))
 print(f"F-string: My name is {name} and I'm {age} years old")
 print("Named format: My name is %(name)s and I'm %(age)d years old" % {"name": name, "age": age})
 
-# Decorators
+# ======================
+# SECTION 13: DECORATORS
+# ======================
+"""
+Decorators modify functions' behavior without altering their code.
+They enhance functions with extra functionality.
+"""
 print("\n=== Decorators ===")
 def timer_decorator(func):
     from time import time
@@ -153,7 +237,13 @@ def slow_function():
 
 print(slow_function())
 
-# Generators
+# =====================
+# SECTION 14: GENERATORS
+# =====================
+"""
+Generators produce values on demand, saving memory.
+They use the yield keyword to pause and resume execution.
+"""
 print("\n=== Generators ===")
 def fibonacci_generator(n):
     a, b = 0, 1
@@ -166,7 +256,13 @@ for num in fibonacci_generator(10):
     print(num, end=" ")
 print("\n")
 
-# Context Managers
+# ==========================
+# SECTION 15: CONTEXT MANAGERS
+# ==========================
+"""
+Context managers ensure resources are properly managed.
+With statements simplify resource handling (files, locks, etc.).
+"""
 print("\n=== Context Managers ===")
 from contextlib import contextmanager
 
@@ -189,7 +285,13 @@ with temporary_value(obj, 'value', 2):
     print(f"During: {obj.value}")
 print(f"After: {obj.value}")
 
-# Advanced Data Structures
+# ===================================
+# SECTION 16: ADVANCED DATA STRUCTURES
+# ===================================
+"""
+Python provides advanced data structures beyond basic types.
+DefaultDict, Counter, and deque offer specialized functionalities.
+"""
 print("\n=== Advanced Data Structures ===")
 from collections import defaultdict, Counter, deque
 
@@ -217,7 +319,13 @@ print(f"Pop right: {queue.pop()}")
 print(f"Pop left: {queue.popleft()}")
 print(f"Final deque: {queue}")
 
-# Type Hints
+# =====================
+# SECTION 17: TYPE HINTS
+# =====================
+"""
+Type hints improve code readability and maintainability.
+They help catch type errors early during development.
+"""
 print("\n=== Type Hints ===")
 from typing import List, Dict, Optional
 
@@ -226,24 +334,48 @@ def process_data(numbers: List[int], config: Dict[str, str], debug: Optional[boo
 
 print(process_data([1, 2, 3, 4], {"mode": "average"}))
 
-# Advanced List Operations
+# =================================
+# SECTION 18: ADVANCED LIST OPERATIONS
+# =================================
+"""
+List comprehensions, filter, and map enhance list processing.
+They provide concise ways to perform complex list manipulations.
+"""
 print("\n=== Advanced List Operations ===")
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 # Filter and map in one line
 even_squares = [x**2 for x in numbers if x % 2 == 0]
 print(f"Squares of even numbers: {even_squares}")
 
-# Dictionary comprehension
+# ===================================
+# SECTION 19: DICTIONARY COMPREHENSION
+# ===================================
+"""
+Dictionary comprehensions create dictionaries concisely.
+They combine loops and conditional statements in a single line.
+"""
 print("\n=== Dictionary Comprehension ===")
 square_dict = {x: x**2 for x in range(5)}
 print(f"Square dictionary: {square_dict}")
 
-# Unpacking
+# ===================
+# SECTION 20: UNPACKING
+# ===================
+"""
+Unpacking simplifies assigning values from iterables.
+The * operator collects remaining items into a list.
+"""
 print("\n=== Unpacking ===")
 first, *middle, last = numbers
 print(f"First: {first}, Middle: {middle}, Last: {last}")
 
-# Advanced Exception Handling
+# ====================================
+# SECTION 21: ADVANCED EXCEPTION HANDLING
+# ====================================
+"""
+Custom exceptions improve error handling.
+They allow for specific error types and more informative messages.
+"""
 print("\n=== Advanced Exception Handling ===")
 class CustomError(Exception):
     def __init__(self, message, error_code):
@@ -256,7 +388,13 @@ try:
 except CustomError as e:
     print(f"Caught custom error: {e.message} (Code: {e.error_code})")
 
-# Advanced Math Operations
+# ==================================
+# SECTION 22: ADVANCED MATH OPERATIONS
+# ==================================
+"""
+The `math` module provides advanced mathematical functions.
+It includes functions for factorial, GCD, square root, etc.
+"""
 print("\n=== Advanced Math Operations ===")
 import math
 
@@ -276,7 +414,14 @@ print(f"Real part: {z.real}")
 print(f"Imaginary part: {z.imag}")
 print(f"Magnitude: {abs(z)}")
 
-# More Advanced Dictionary Operations
+
+# ======================================
+# SECTION 23: MORE DICTIONARY OPERATIONS
+# ======================================
+"""
+Nested dictionaries and dictionary methods offer advanced capabilities.
+They support complex data structures and efficient data manipulation.
+"""
 print("\n=== Advanced Dictionary Operations ===")
 # Nested dictionaries
 school = {
@@ -302,7 +447,13 @@ dict2 = {'c': 3, 'd': 4}
 merged_dict = {**dict1, **dict2}
 print(f"Merged dictionary: {merged_dict}")
 
-# Advanced Sorting
+# ==========================
+# SECTION 24: ADVANCED SORTING
+# ==========================
+"""
+Custom sorting functions provide flexibility in sorting data.
+Lambda functions and key arguments enable complex sorting criteria.
+"""
 print("\n=== Advanced Sorting ===")
 # Custom sorting
 students = [
@@ -319,7 +470,13 @@ words = ['python', 'programming', 'code', 'developer']
 sorted_words = sorted(words, key=len)
 print(f"Words sorted by length: {sorted_words}")
 
-# Object-Oriented Programming
+# ====================================
+# SECTION 25: OBJECT-ORIENTED PROGRAMMING
+# ====================================
+"""
+Object-oriented programming (OOP) organizes code using classes and objects.
+It promotes code reusability and maintainability.
+"""
 print("\n=== Object-Oriented Programming ===")
 class Vehicle:
     def __init__(self, brand, model, year):
@@ -355,7 +512,13 @@ print(f"Car info: {my_car.display_info()}")
 my_car.mileage = 5000
 print(f"Mileage: {my_car.mileage}")
 
-# More Control Flow Examples
+# =================================
+# SECTION 26: ADVANCED CONTROL FLOW
+# =================================
+"""
+Match-case statements and for-else/while-else structures enhance control flow.
+They provide more expressive and efficient ways to handle conditional logic.
+"""
 print("\n=== Advanced Control Flow ===")
 # Match case (Python 3.10+)
 def analyze_type(data):
@@ -388,7 +551,13 @@ for i in range(3):
             continue
         print(f"i={i}, j={j}")
 
-# Boolean operations and short-circuit evaluation
+# ===============================
+# SECTION 27: BOOLEAN OPERATIONS
+# ===============================
+"""
+Boolean operations (and, or, not) are fundamental in logic.
+Short-circuit evaluation optimizes boolean expression evaluation.
+"""
 print("\n=== Boolean Operations ===")
 x = 5
 y = 10
@@ -396,7 +565,13 @@ print(f"x < y and y < 15: {x < y and y < 15}")
 print(f"x > y or y < 15: {x > y or y < 15}")
 print(f"not (x < y): {not (x < y)}")
 
-# More Error Handling
+# ===================================
+# SECTION 28: ADVANCED ERROR HANDLING
+# ===================================
+"""
+Multiple exception handling and the `else` and `finally` blocks enhance error handling.
+They provide more robust and informative error management.
+"""
 print("\n=== Advanced Error Handling ===")
 def divide_numbers(a, b):
     try:
