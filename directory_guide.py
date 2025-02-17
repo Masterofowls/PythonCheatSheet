@@ -33,12 +33,27 @@ def turtle_demo():
     print("Running Turtle Guide...")
     print("Please run turtle_guide.py directly for the graphics window")
 
+def sql_demo():
+    print("Running SQL Guide...")
+    print("Please run sql_guide.py directly for the SQL operations demo")
+
+def json_demo():
+    print("Running JSON Guide...")
+    print("Please run json_guide.py directly for JSON operations examples")
+
+def flask_demo():
+    print("Running Flask Guide...")
+    print("Please run flask_guide.py directly for Flask web framework examples")
+
 def main():
     # Dictionary of demos
     demos: Dict[str, Callable] = {
         "Advanced Calculator": calculator_demo,
         "PyGame": pygame_demo,
-        "Turtle": turtle_demo
+        "Turtle": turtle_demo,
+        "SQL": sql_demo,
+        "JSON": json_demo,
+        "Flask": flask_demo
     }
     
     print("Python Guides Directory")
