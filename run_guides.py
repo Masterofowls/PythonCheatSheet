@@ -3,67 +3,53 @@ from tkinter import ttk
 import subprocess
 import sys
 
-class GuidesMenu:
-    def __init__(self):
-        self.window = tk.Tk()
-        self.window.title("Python Learning Hub")
-        self.window.geometry("600x800")
-
-        # Configure style
-        style = ttk.Style()
-        style.configure("Title.TLabel", font=("Arial", 24, "bold"), padding=10)
-        style.configure("Guide.TButton", font=("Arial", 12), padding=10)
-
-        # Main container
-        main_frame = ttk.Frame(self.window, padding="20")
-        main_frame.pack(fill=tk.BOTH, expand=True)
-
-        # Title
-        title = ttk.Label(
-            main_frame,
-            text="Python Learning Hub",
-            style="Title.TLabel"
-        )
-        title.pack(pady=(0, 20))
-
-        # Guide buttons
-        guides = [
-            ("Advanced Calculator", "advanced_calculator.py"),
-            ("AI Guide", "ai_guide.py"),
-            ("Django Guide", "django_guide.py"),
-            ("Flask Guide", "flask_guide.py"),
-            ("PyGame Guide", "pygame_guide.py"),
-            ("Turtle Guide", "turtle_guide.py"),
-            ("SQL Guide", "sql_guide.py"),
-            ("JSON Guide", "json_guide.py"),
-            ("Programming Test", "programming_test.py"),
-            ("Packages Guide", "packages_guide.py")
-        ]
-
-        for name, file in guides:
-            btn = ttk.Button(
-                main_frame,
-                text=name,
-                style="Guide.TButton",
-                command=lambda f=file: self.run_guide(f)
-            )
-            btn.pack(fill=tk.X, pady=5)
-
-        # Exit button
-        exit_btn = ttk.Button(
-            main_frame,
-            text="Exit",
-            style="Guide.TButton",
-            command=self.window.quit
-        )
-        exit_btn.pack(fill=tk.X, pady=(20, 0))
-
-    def run_guide(self, file_name):
+def run_guide(file_name):
+    try:
         subprocess.Popen([sys.executable, file_name])
+    except Exception as e:
+        print(f"Error running {file_name}: {e}")
 
-    def run(self):
-        self.window.mainloop()
+def main():
+    root = tk.Tk()
+    root.title("Python Guides")
+    root.geometry("400x600")
+
+    # Style configuration
+    style = ttk.Style()
+    style.configure("Guide.TButton", padding=10, font=('Arial', 11))
+
+    # Main frame
+    frame = ttk.Frame(root, padding="10")
+    frame.pack(fill=tk.BOTH, expand=True)
+
+    # Title
+    title = ttk.Label(frame, text="Python Learning Guides", font=('Arial', 16, 'bold'))
+    title.pack(pady=(0, 20))
+
+    # Guide buttons
+    guides = [
+        ("Advanced Calculator", "advanced_calculator.py"),
+        ("Programming Test", "programming_test.py"),
+        ("Packages Guide", "packages_guide.py"),
+        ("PyEnv Guide", "pyenv_guide.py"),
+        ("PyPy Guide", "pypy_guide.py"),
+        ("SQL Guide", "sql_guide.py")
+    ]
+
+    for name, file in guides:
+        btn = ttk.Button(
+            frame,
+            text=name,
+            style="Guide.TButton",
+            command=lambda f=file: run_guide(f)
+        )
+        btn.pack(fill=tk.X, pady=5)
+
+    # Exit button
+    exit_btn = ttk.Button(frame, text="Exit", style="Guide.TButton", command=root.quit)
+    exit_btn.pack(fill=tk.X, pady=(20, 0))
+
+    root.mainloop()
 
 if __name__ == "__main__":
-    menu = GuidesMenu()
-    menu.run()
+    main()
