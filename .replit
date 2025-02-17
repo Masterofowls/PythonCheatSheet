@@ -15,7 +15,7 @@ run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
-runButton = "Run Directory Guide"
+runButton = "Run Menu"
 
 [[workflows.workflow]]
 name = "Run Calculator"
@@ -48,6 +48,38 @@ author = 39555485
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python directory_guide.py"
+
+[[workflows.workflow]]
+name = "Run PyEnv Guide"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python pyenv_guide.py"
+
+[[workflows.workflow]]
+name = "Run AI Guide"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python ai_guide.py"
+
+[[workflows.workflow]]
+name = "Run SQL Guide"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python sql_guide.py"
+
+[[workflows.workflow]]
+name = "Run Menu"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python run_guides.py"
 
 [[ports]]
 localPort = 8080

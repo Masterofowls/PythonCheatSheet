@@ -1,0 +1,27 @@
+{
+    "name": "Tech Corp",
+    "employees": [
+        {
+            "id": 1,
+            "name": "Alice",
+            "roles": [
+                "developer",
+                "team lead"
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Bob",
+            "roles": [
+                "designer"
+            ]
+        }
+    ],
+    "office_locations": {
+        "main": "New York",
+        "branches": [
+            "London",
+            "Tokyo"
+        ]
+    }
+}
