@@ -13,3 +13,22 @@ requiredFiles = [".replit", "replit.nix"]
 [deployment]
 run = ["python3", "main.py"]
 deploymentTarget = "cloudrun"
+
+[workflows]
+runButton = "Run Turtle"
+
+[[workflows.workflow]]
+name = "Run Calculator"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python advanced_calculator.py"
+
+[[workflows.workflow]]
+name = "Run Turtle"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python turtle_guide.py"
