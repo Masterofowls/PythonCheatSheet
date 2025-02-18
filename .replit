@@ -11,7 +11,7 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["python3", "main.py"]
+run = ["sh", "-c", "python run_guides.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
@@ -104,6 +104,14 @@ author = 39555485
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "python run_guides.py"
+
+[[workflows.workflow]]
+name = "Run Python File"
+author = 39555485
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python $REPL_FILENAME"
 
 [[ports]]
 localPort = 8080
