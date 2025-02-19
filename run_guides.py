@@ -33,12 +33,25 @@ HTML_TEMPLATE = """
 """
 
 demos: Dict[str, str] = {
-    "Advanced Calculator": "GUI Calculator (run advanced_calculator.py locally)",
-    "PyGame": "Interactive Game Demo (run pygame_guide.py locally)",
-    "Turtle": "Graphics Demo (run turtle_guide.py locally)",
-    "SQL": "SQL Operations Examples (run sql_guide.py)",
-    "JSON": "JSON Processing Examples (run json_guide.py)",
-    "Flask": "Web Framework Examples (run flask_guide.py)"
+    "Common Usage Guide": "Comprehensive Python Programming Guide",
+    "Advanced Calculator": "GUI Calculator Application",
+    "AI Guide": "Artificial Intelligence Examples",
+    "Directory Guide": "Python Guides Directory",
+    "Django Guide": "Django Web Framework Guide",
+    "Flask Guide": "Flask Web Framework Guide",
+    "JSON Guide": "JSON Processing Guide",
+    "Packages Guide": "Modern Python Packages Guide",
+    "PIP Guide": "Python Package Manager Guide",
+    "PIPX Guide": "PIPX Package Management Guide",
+    "Programming Test": "Programming Test Examples",
+    "PyEnv Guide": "Python Environment Guide",
+    "PyGame Guide": "PyGame Development Guide",
+    "PyPy Guide": "PyPy Implementation Guide",
+    "PyQt Guide": "PyQt GUI Development Guide",
+    "Server Guide": "Python Server Implementations",
+    "SQL Guide": "SQL Operations Guide",
+    "Testing Guide": "Python Testing Guide",
+    "Turtle Guide": "Python Turtle Graphics Guide"
 }
 
 def read_file_content(filename):
@@ -51,10 +64,25 @@ def read_file_content(filename):
 @app.route('/')
 def home():
     files = {
-        "Flask": read_file_content('flask_guide.py'),
-        "SQL": read_file_content('sql_guide.py'),
-        "JSON": read_file_content('json_guide.py'),
-        "Advanced Calculator": read_file_content('advanced_calculator.py')
+        "Common Usage Guide": read_file_content('commonusage.py'),
+        "Advanced Calculator": read_file_content('advanced_calculator.py'),
+        "AI Guide": read_file_content('ai_guide.py'),
+        "Directory Guide": read_file_content('directory_guide.py'),
+        "Django Guide": read_file_content('django_guide.py'),
+        "Flask Guide": read_file_content('flask_guide.py'),
+        "JSON Guide": read_file_content('json_guide.py'),
+        "Packages Guide": read_file_content('packages_guide.py'),
+        "PIP Guide": read_file_content('pip_guide.py'),
+        "PIPX Guide": read_file_content('pipx_guide.py'),
+        "Programming Test": read_file_content('programming_test.py'),
+        "PyEnv Guide": read_file_content('pyenv_guide.py'),
+        "PyGame Guide": read_file_content('pygame_guide.py'),
+        "PyPy Guide": read_file_content('pypy_guide.py'),
+        "PyQt Guide": read_file_content('pyqt_guide.py'),
+        "Server Guide": read_file_content('server_guide.py'),
+        "SQL Guide": read_file_content('sql_guide.py'),
+        "Testing Guide": read_file_content('testing_guide.py'),
+        "Turtle Guide": read_file_content('turtle_guide.py')
     }
     return render_template_string(HTML_TEMPLATE, demos=demos, files=files)
 
