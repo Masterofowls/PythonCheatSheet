@@ -1,0 +1,36 @@
+2025-02-19T16:24:49Z info: Deployment: 9ae937c5-eace-4342-8c9f-11dc641a21a3
+2025-02-19T16:24:49Z info: Build: 8b1aed86-8979-4e57-ad56-beb8ac03d238
+2025-02-19T16:24:49Z info: Connecting to builder
+2025-02-19T16:24:54Z info: Builder connected
+2025-02-19T16:24:57Z info: Installing packages
+2025-02-19T16:24:57Z info: Skipping Build as no Build command set
+2025-02-19T16:24:58Z info: Pushing pid1 binary layer...
+2025-02-19T16:25:03Z info: Pushing hosting layer...
+2025-02-19T16:25:03Z info: Retrieved cached nix layer
+2025-02-19T16:25:03Z warning: Detected broken symlink! The path "/tmp/pulse-PKdhtXMmr18n" does not exist.
+2025-02-19T16:25:04Z info: Created hosting layer
+2025-02-19T16:25:06Z info: Created pid1 binary layer
+2025-02-19T16:25:50Z info: Pushing Repl (cache) layer...
+2025-02-19T16:25:52Z info: Created Repl (cache) layer
+2025-02-19T16:25:53Z info: Pushed image manifest
+2025-02-19T16:25:54Z info: Pushed soci index manifest
+2025-02-19T16:25:59Z info: Creating Autoscale service
+  File "/home/runner/workspace/run_guides.py", line 13, in main
+  File "/home/runner/workspace/run_guides.py", line 57, in <module>
+command finished with error [sh -c python run_guides.py]: exit status 1
+  File "/home/runner/workspace/run_guides.py", line 57, in <module>
+  File "/home/runner/workspace/run_guides.py", line 57, in <module>
+           ^^^^^^^
+  File "/home/runner/workspace/run_guides.py", line 13, in main
+Traceback (most recent call last):
+    root = tk.Tk()
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    main()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+           ^^^^^^^
+_tkinter.TclError: couldn't connect to display ":0"
+    self.tk = _tkinter.create(screenName, baseName, className, interactive, wantobjects, useTk, sync, use)
+  File "/home/runner/workspace/run_guides.py", line 57, in <module>
+crash loop detected
+2025-02-19T16:26:50Z error: The deployment is crash looping. This can happen if the run command fails or exits immediately after starting. Check the logs for more information.
