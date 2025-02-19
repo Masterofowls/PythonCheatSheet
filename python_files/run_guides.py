@@ -85,10 +85,11 @@ def read_file_content(filename):
 def run_file(filename):
     import subprocess
     try:
-        subprocess.Popen(['python', filename])
-        return f"Running {filename}"
+        file_path = f"python_files/{filename}"
+        subprocess.Popen(['python', file_path])
+        return f"Running {file_path}"
     except Exception as e:
-        return f"Error running {filename}: {str(e)}"
+        return f"Error running {file_path}: {str(e)}"
 
 @app.route('/')
 def home():
