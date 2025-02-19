@@ -11,7 +11,7 @@ language = "python3"
 requiredFiles = [".replit", "replit.nix"]
 
 [deployment]
-run = ["sh", "-c", "python run_guides.py"]
+run = ["sh", "-c", "python python_files/run_guides.py"]
 deploymentTarget = "cloudrun"
 
 [workflows]
@@ -31,7 +31,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python turtle_guide.py"
+args = "python python_files/turtle_guide.py"
 
 [[workflows.workflow]]
 name = "Run Guides"
@@ -39,7 +39,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python run_guides.py"
+args = "python python_files/run_guides.py"
 
 [[workflows.workflow]]
 name = "Run Directory Guide"
@@ -55,7 +55,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python pyenv_guide.py"
+args = "python python_files/pyenv_guide.py"
 
 [[workflows.workflow]]
 name = "Run AI Guide"
@@ -63,7 +63,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python ai_guide.py"
+args = "python python_files/ai_guide.py"
 
 [[workflows.workflow]]
 name = "Run SQL Guide"
@@ -71,7 +71,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python sql_guide.py"
+args = "python python_files/sql_guide.py"
 
 [[workflows.workflow]]
 name = "Run Menu"
@@ -79,7 +79,7 @@ author = 39555485
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "python run_guides.py"
+args = "python python_files/run_guides.py"
 
 [[workflows.workflow]]
 name = "Packages Guide"
