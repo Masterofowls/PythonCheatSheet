@@ -14,8 +14,18 @@ HTML_TEMPLATE = """
     <style>
         body { font-family: Arial, sans-serif; margin: 40px; }
         .guide { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
-        .file-content { background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px; white-space: pre-wrap; }
+        .file-content { background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px; white-space: pre-wrap; display: none; }
+        .toggle-btn { padding: 5px 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        .toggle-btn:hover { background: #45a049; }
     </style>
+    <script>
+        function toggleCode(element) {
+            const content = element.nextElementSibling;
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
+            element.textContent = isVisible ? 'Show Code' : 'Hide Code';
+        }
+    </script>
 </head>
 <body>
     <h1>Python Guides Directory</h1>
@@ -24,6 +34,7 @@ HTML_TEMPLATE = """
         <h3>{{ name }}</h3>
         <p>{{ description }}</p>
         {% if files.get(name) %}
+            <button class="toggle-btn" onclick="toggleCode(this)">Show Code</button>
             <div class="file-content">{{ files.get(name) }}</div>
         {% endif %}
     </div>
