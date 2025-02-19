@@ -143,5 +143,95 @@ class Person:
 person = Person("Alice", 30)
 print(person.greet())
 
+# =============================================
+# SECTION 7: FILE OPERATIONS
+# =============================================
+"""
+Common file operations in Python.
+"""
+print("\n=== File Operations ===")
+
+# Writing to a file
+with open("example.txt", "w") as f:
+    f.write("Hello from Python!")
+
+# Reading from a file
+with open("example.txt", "r") as f:
+    content = f.read()
+    print("File content:", content)
+
+# =============================================
+# SECTION 8: DECORATORS
+# =============================================
+"""
+Demonstrates the use of decorators in Python.
+"""
+print("\n=== Decorators ===")
+
+def timer_decorator(func):
+    def wrapper(*args, **kwargs):
+        from time import time
+        start = time()
+        result = func(*args, **kwargs)
+        end = time()
+        print(f"Function {func.__name__} took {end-start:.2f} seconds")
+        return result
+    return wrapper
+
+@timer_decorator
+def example_function():
+    import time
+    time.sleep(1)
+    return "Function completed"
+
+print(example_function())
+
+# =============================================
+# SECTION 9: CONTEXT MANAGERS
+# =============================================
+"""
+Using context managers with 'with' statement.
+"""
+print("\n=== Context Managers ===")
+
+class Timer:
+    def __enter__(self):
+        from time import time
+        self.start = time()
+        return self
+
+    def __exit__(self, *args):
+        from time import time
+        self.end = time()
+        print(f"Operation took: {self.end - self.start:.2f} seconds")
+
+with Timer():
+    import time
+    time.sleep(0.5)
+    print("Operation completed")
+
+# =============================================
+# SECTION 10: GENERATORS
+# =============================================
+"""
+Generator functions and expressions.
+"""
+print("\n=== Generators ===")
+
+def fibonacci_generator(n):
+    a, b = 0, 1
+    for _ in range(n):
+        yield a
+        a, b = b, a + b
+
+print("Fibonacci sequence:")
+for num in fibonacci_generator(5):
+    print(num, end=" ")
+print()
+
+# Generator expression
+squares = (x**2 for x in range(5))
+print("Squares:", list(squares))
+
 if __name__ == "__main__":
     print("\nGuide execution complete!")
