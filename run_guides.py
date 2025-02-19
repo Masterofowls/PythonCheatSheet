@@ -15,15 +15,23 @@ HTML_TEMPLATE = """
         body { font-family: Arial, sans-serif; margin: 40px; }
         .guide { margin: 20px 0; padding: 10px; border: 1px solid #ddd; }
         .file-content { background: #f5f5f5; padding: 15px; border-radius: 5px; margin-top: 10px; white-space: pre-wrap; display: none; }
-        .toggle-btn { padding: 5px 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        .toggle-btn { padding: 5px 10px; background: #4CAF50; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 5px; }
         .toggle-btn:hover { background: #45a049; }
+        .run-btn { padding: 5px 10px; background: #2196F3; color: white; border: none; border-radius: 3px; cursor: pointer; }
+        .run-btn:hover { background: #1976D2; }
     </style>
     <script>
         function toggleCode(element) {
-            const content = element.nextElementSibling;
+            const content = element.nextElementSibling.nextElementSibling;
             const isVisible = content.style.display === 'block';
             content.style.display = isVisible ? 'none' : 'block';
             element.textContent = isVisible ? 'Show Code' : 'Hide Code';
+        }
+        
+        function runFile(filename) {
+            fetch('/run/' + filename)
+                .then(response => response.text())
+                .then(output => alert('Running: ' + filename));
         }
     </script>
 </head>
@@ -35,6 +43,7 @@ HTML_TEMPLATE = """
         <p>{{ description }}</p>
         {% if files.get(name) %}
             <button class="toggle-btn" onclick="toggleCode(this)">Show Code</button>
+            <button class="run-btn" onclick="runFile('{{ name|lower|replace(' ', '_') }}.py')">Run File</button>
             <div class="file-content">{{ files.get(name) }}</div>
         {% endif %}
     </div>
@@ -71,6 +80,15 @@ def read_file_content(filename):
             return f.read()
     except:
         return None
+
+@app.route('/run/<filename>')
+def run_file(filename):
+    import subprocess
+    try:
+        subprocess.Popen(['python', filename])
+        return f"Running {filename}"
+    except Exception as e:
+        return f"Error running {filename}: {str(e)}"
 
 @app.route('/')
 def home():
